@@ -40,7 +40,7 @@ pipeline {
                     flask run --host=0.0.0.0 &
                     sleep 5
 
-                    java -jar /home/sergio/cp1-1/wiremock/wiremock.jar --port 9090 --root-dir test/wiremock &
+                    java -jar $WORKSPACE/wiremock/wiremock.jar --port 9090 --root-dir test/wiremock &
                     sleep 5
 
                     pytest --junitxml=result-rest.xml test/rest
