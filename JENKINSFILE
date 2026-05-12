@@ -40,7 +40,7 @@ pipeline {
                     flask run --host=0.0.0.0 &
                     sleep 5
 
-                    java -jar /home/sergio/cp1-1/wiremock/wiremock-standalone-3.3.1.jar \
+                    java -jar $WORKSPACE/wiremock/wiremock-standalone-3.3.1.jar \
                     --port 8080 \
                     --root-dir test/wiremock &
 
