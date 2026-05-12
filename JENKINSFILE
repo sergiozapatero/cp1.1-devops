@@ -40,10 +40,10 @@ pipeline {
                     flask run --host=0.0.0.0 &
                     sleep 5
 
-                    java -jar $WORKSPACE/wiremock/wiremock-standalone-3.3.1.jar \
-                    --port 8080 \
-                    --root-dir test/wiremock &
+		    mkdir -p wiremock
+		    wget -q -O wiremock/wiremock.jar https://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/3.3.1/wiremock-standalone-3.3.1.jar
 
+                    java -jar wiremock/wiremock-standalone-3.3.1.jar --port 8080 --root-dir test/wiremock &
                     sleep 5
 
                     pytest --junitxml=result-rest.xml test/rest
